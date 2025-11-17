@@ -1,0 +1,366 @@
+http://localhost:8000
+<!-- saved from url=(0064)file:///C:/Users/sagar/Downloads/auto_model_x_website_index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>block to change email, phone, calendly, logo etc.
+     3) Open locally: double-click index.html or serve with `python -m http.server` and visit http://localhost:8000
+     4) Deploy options:
+        - GitHub Pages: Push this file to a repo `index.html` on the main branch and enable Pages.
+        - Netlify: Drag-and-drop the file into Netlify Sites (instant deployment).
+        - Vercel: Use `vercel` or connect repo.
+     5) Contact form: this template uses Formspree (free tier). Replace FORM_ENDPOINT with your Formspree endpoint.
+
+   Notes:
+   - This is a responsive single-page site with anchor navigation for Home/Services/Pricing/About/Contact.
+   - Fonts are loaded from Google Fonts. Replace with your chosen fonts if desired.
+   - Logo placeholder: replace the SVG/alt text with your actual logo image.
+--&gt;
+
+
+
+
+  
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AutoModelX — Automating Finance. Accelerating Decisions.</title>
+  <meta name="description" content="AI-powered financial modeling, dashboards and pitch automation for next-gen founders.">
+
+  <!-- Fonts -->
+  <link href="./index_files/css2" rel="stylesheet">
+
+  <!-- Basic styling: premium black + gold theme -->
+  <style>
+    :root{
+      --bg:#0b0b0b; /* near black */
+      --card:#111111;
+      --gold:#d4af37;
+      --muted:#bdbdbd;
+      --white:#ffffff;
+      --maxw:1100px;
+      --radius:12px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--white);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxw);margin:0 auto;padding:28px}
+
+    header{position:sticky;top:0;backdrop-filter:blur(6px);background:linear-gradient(180deg,rgba(11,11,11,0.8),rgba(11,11,11,0.6));border-bottom:1px solid rgba(255,255,255,0.03);z-index:50}
+    .nav{display:flex;gap:18px;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo svg{width:44px;height:44px}
+    .brand h1{font-size:16px;margin:0;letter-spacing:0.6px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
+    nav a{padding:10px 12px;border-radius:8px;color:var(--muted);font-weight:600}
+    nav a:hover{color:var(--white);background:rgba(255,255,255,0.03)}
+    .cta{background:var(--gold);color:#000;padding:10px 16px;border-radius:10px;font-weight:700}
+
+    /* Hero */
+    .hero{padding:72px 0;display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center}
+    .eyebrow{color:var(--gold);font-weight:700;font-size:13px}
+    .headline{font-size:40px;line-height:1.02;margin:14px 0 12px}
+    .sub{color:var(--muted);font-size:16px;max-width:560px}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
+    .lead-form input,.lead-form textarea{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--white)}
+    .lead-form button{margin-top:12px;width:100%;padding:12px;background:var(--gold);border:none;border-radius:10px;font-weight:700}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+    .feature{background:transparent;padding:18px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+    .feature h4{margin:6px 0}
+    .small{font-size:14px;color:var(--muted)}
+
+    /* Sections */
+    section{padding:48px 0}
+    h2{font-size:22px;margin:0 0 8px}
+
+    /* Services grid */
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service-card{padding:20px;border-radius:12px;background:var(--card);border:1px solid rgba(255,255,255,0.03)}
+    .price{font-weight:800;color:var(--gold);font-size:18px}
+
+    /* Pricing */
+    .pricing{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .plan{padding:20px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.03)}
+
+    /* About */
+    .about-grid{display:grid;grid-template-columns:1fr 360px;gap:26px}
+    .founder{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+
+    footer{padding:28px 0;border-top:1px solid rgba(255,255,255,0.03);margin-top:26px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .features{grid-template-columns:1fr}
+      .services-grid{grid-template-columns:1fr}
+      .pricing{grid-template-columns:1fr}
+      .about-grid{grid-template-columns:1fr}
+      nav ul{display:none}
+    }
+  </style>
+
+
+
+  <!-- CONFIG: change these values -->
+  <script>
+    const CONFIG = {
+      COMPANY_NAME: 'AutoModelX',
+      TAGLINE: 'Automating Finance. Accelerating Decisions.',
+      EMAIL: 'Saga03022000@gmail.com',
+      PHONE: '+91-7011734867',
+      CALENDLY: 'https://calendly.com/your-calendly',
+      FORM_ENDPOINT: 'https://formspree.io/f/yourformid', // replace with your Formspree endpoint
+      YEAR: new Date().getFullYear()
+    };
+  </script>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">
+          <!-- Minimal premium text logo: replace with image if available -->
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="18" fill="#111"></rect>
+            <text x="50%" y="53%" text-anchor="middle" fill="#d4af37" font-family="Inter" font-weight="700" font-size="34">AMX</text>
+          </svg>
+        </div>
+        <div>
+          <h1>AutoModelX</h1>
+          <p>Automating Finance. Accelerating Decisions.</p>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="file:///C:/Users/sagar/Downloads/auto_model_x_website_index.html#home">Home</a></li>
+          <li><a href="file:///C:/Users/sagar/Downloads/auto_model_x_website_index.html#services">Services</a></li>
+          <li><a href="file:///C:/Users/sagar/Downloads/auto_model_x_website_index.html#pricing">Pricing</a></li>
+          <li><a href="file:///C:/Users/sagar/Downloads/auto_model_x_website_index.html#about">About</a></li>
+          <li><a href="file:///C:/Users/sagar/Downloads/auto_model_x_website_index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <a class="cta" href="file:///C:/Users/sagar/Downloads/auto_model_x_website_index.html#contact">Book Strategy Call</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">AI CFO &amp; Financial Automation</div>
+        <h2 class="headline">Automating Finance. Accelerating Decisions.</h2>
+        <p class="sub">AI-powered financial modeling, dashboards, and pitch automation for next-gen founders. Reduce manual work, improve accuracy, and prepare investor-grade materials in hours — not weeks.</p>
+
+        <div class="features">
+          <div class="feature">
+            <strong>Automated Models</strong>
+            <p class="small">3-statement, DCF, scenario planning — generated from inputs in minutes.</p>
+          </div>
+          <div class="feature">
+            <strong>Investor Decks</strong>
+            <p class="small">Auto-filled slides with financials and visuals ready for investors.</p>
+          </div>
+          <div class="feature">
+            <strong>Dashboards</strong>
+            <p class="small">Power BI &amp; Excel dashboards with live KPIs and runway tracking.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Book a free strategy call</h3>
+          <p class="small">Share a few details and get a free finance audit for your startup.</p>
+          <form class="lead-form" id="leadForm">
+            <input type="text" name="name" placeholder="Full name" required="">
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="text" name="startup" placeholder="Startup name (optional)">
+            <textarea name="message" rows="3" placeholder="What do you need? (Model / Deck / Dashboard)"></textarea>
+            <button type="submit">Book Call</button>
+          </form>
+          <p style="font-size:13px;color:var(--muted);margin-top:12px">Prefer Calendly? <a href="https://calendly.com/your-calendly" id="calendlyLink" style="color:var(--gold)">Schedule here</a></p>
+        </div>
+      </aside>
+    </section>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <p class="small">A premium suite of finance automation and investor readiness services.</p>
+
+      <div class="services-grid" style="margin-top:18px">
+        <div class="service-card">
+          <h3>AI CFO Co-Pilot <span class="price">(Monthly)</span></h3>
+          <p class="small">Automated 3-statement model, KPI dashboard, MIS automation, weekly strategy calls.</p>
+          <p style="margin-top:12px"><strong>Ideal for:</strong> Seed to Series A startups</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Automated Financial Modelling</h3>
+          <p class="small">Investor-grade financial projections with scenarios, sensitivity, and valuation.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Pitch Deck Automation</h3>
+          <p class="small">12–15 slide investor-ready decks auto-linked to your model.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="pricing">
+      <h2>Pricing</h2>
+      <p class="small">Simple, transparent pricing for every stage.</p>
+
+      <div class="pricing" style="margin-top:18px">
+        <div class="plan">
+          <h3>Starter Automation Kit</h3>
+          <p class="price">₹24,999</p>
+          <ul style="color:var(--muted);font-size:14px">
+            <li>Automated revenue &amp; expense model</li>
+            <li>Basic dashboard</li>
+            <li>10-slide pitch deck</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3>AI CFO Lite</h3>
+          <p class="price">₹49,999</p>
+          <ul style="color:var(--muted);font-size:14px">
+            <li>Complete financial model</li>
+            <li>Pitch deck + numbers</li>
+            <li>KPI dashboard</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3>AI CFO Pro</h3>
+          <p class="price">₹99,999</p>
+          <ul style="color:var(--muted);font-size:14px">
+            <li>Full 3-statement model</li>
+            <li>Power BI dashboard</li>
+            <li>Weekly strategy calls</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3>AI CFO Elite</h3>
+          <p class="price">₹150,000–₹250,000</p>
+          <ul style="color:var(--muted);font-size:14px">
+            <li>Dedicated AI CFO</li>
+            <li>All automations + fundraising support</li>
+            <li>On-call support</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About AutoModelX</h2>
+      <div class="about-grid" style="margin-top:18px">
+        <div>
+          <p class="small">AutoModelX blends finance expertise with automation intelligence. We remove manual reporting, speed up investor readiness, and provide a virtual AI CFO experience for founders.</p>
+
+          <h3 style="margin-top:18px">Mission</h3>
+          <p class="small">To automate financial workflows and empower founders to make faster, better strategic decisions.</p>
+
+          <h3 style="margin-top:18px">Vision</h3>
+          <p class="small">To become the world’s most trusted AI-powered financial automation partner for startups.</p>
+
+        </div>
+        <aside class="founder">
+          <h3>Founder — Sagar Kumar</h3>
+          <p class="small">CMA | CFA | Ex-Financial Modeling Manager. Expert in Excel, Power BI, SQL, and automation. Passionate about building tools that make financial processes faster and more reliable.</p>
+          <p class="small" style="margin-top:12px">Want to talk? <a style="color:var(--gold)" href="mailto:support@automodelx.com">support@automodelx.com</a></p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="small">Book a free consultation or send us a message.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px">
+        <div class="card">
+          <form id="contactForm">
+            <input name="name" placeholder="Full name" required="">
+            <input name="email" placeholder="Email" type="email" required="">
+            <input name="startup" placeholder="Startup name (optional)">
+            <textarea name="message" rows="6" placeholder="Describe your requirement"></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+
+        <aside class="card">
+          <h4>Contact details</h4>
+          <p class="small">Email: <a href="mailto: support@automodelx.com" style="color:var(--gold)">support@automodelx.com</a></p>
+          <p class="small">Phone: +91 XXXXXXXXXX</p>
+          <p class="small">Schedule: <a id="calendlyLink2" href="https://calendly.com/your-calendly" style="color:var(--gold)">Book a call</a></p>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <strong>AutoModelX</strong>
+          <div style="color:var(--muted);font-size:13px">Automating Finance. Accelerating Decisions.</div>
+        </div>
+        <div style="color:var(--muted);font-size:13px">© <span id="year">2025</span> AutoModelX. All rights reserved.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Populate dynamic values
+    document.getElementById('year').innerText = CONFIG.YEAR;
+    document.getElementById('calendlyLink').href = CONFIG.CALENDLY;
+    document.getElementById('calendlyLink2').href = CONFIG.CALENDLY;
+
+    // Lead form handling (uses Formspree or client-side fallback)
+    const leadForm = document.getElementById('leadForm');
+    leadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(leadForm);
+      try{
+        const res = await fetch(CONFIG.FORM_ENDPOINT, {method:'POST',body:fd,headers:{'Accept':'application/json'}});
+        if(res.ok) alert('Thanks! We\'ll contact you soon.');
+        else alert('Submission error — please email ' + CONFIG.EMAIL);
+        leadForm.reset();
+      }catch(err){
+        alert('Network error — please email ' + CONFIG.EMAIL);
+      }
+    });
+
+    // Contact form sends same data to FORM_ENDPOINT
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(contactForm);
+      try{
+        const res = await fetch(CONFIG.FORM_ENDPOINT, {method:'POST',body:fd,headers:{'Accept':'application/json'}});
+        if(res.ok) alert('Message sent — we will reply within 24 hours.');
+        else alert('Submission error — please email ' + CONFIG.EMAIL);
+        contactForm.reset();
+      }catch(err){
+        alert('Network error — please email ' + CONFIG.EMAIL);
+      }
+    });
+
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+  </script>
+
+</body></html>
